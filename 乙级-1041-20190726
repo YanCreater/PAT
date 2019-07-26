@@ -1,0 +1,40 @@
+#include<stdio.h>
+struct PAT {
+	char AdmissionCardNumber[17];
+	int TestSeatNumber;
+	int ExamSeatNumber;
+};
+struct PAT  pat[1000];
+int main()
+{
+	int N,i,M,m[1000],j;
+	scanf_s("%d", &N); 
+   for (i = 0; i < N; i++)
+   {
+	   scanf_s("%s", pat[i].AdmissionCardNumber,17);
+	   scanf_s("%d", &pat[i].TestSeatNumber);
+	   scanf_s("%d", &pat[i].ExamSeatNumber);
+   }
+   scanf_s("%d", &M);
+   for (i = 0; i < M; i++)
+   {
+	   scanf_s("%d", &m[i]);
+   }
+   for (i = 0; i < M; i++)
+   {
+	   for (j = 0; j < N; j++)
+	   {
+		   if (m[i] == pat[j].TestSeatNumber&&i==(M-1))
+		   {
+			   printf("%s", pat[j].AdmissionCardNumber);
+			   printf(" %d", pat[j].ExamSeatNumber);
+		   }
+		   else if(m[i] == pat[j].TestSeatNumber&&i<M-1)
+		   {
+			   printf("%s", pat[j].AdmissionCardNumber);
+			   printf(" %d\n", pat[j].ExamSeatNumber);
+		   }
+	   }
+   }
+   return 0;
+}
